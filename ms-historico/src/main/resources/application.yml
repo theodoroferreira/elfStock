@@ -1,0 +1,34 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: ms-historico
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: group_id
+      auto-offset-reset: earliest
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kahka.common.serialization.StringSerializer
+    topic:
+      order-history: topic_estoque_historico
+
+  data:
+    mongodb:
+      database: historico_db
+      port: 27017
+      host: localhost
+
+springdoc:
+  api-docs:
+    path: /api-docs
+    version: openapi_3_0
+  swagger-ui:
+    path: /swagger-ui.html
+    csrf:
+      enabled: false
+  show-actuator: true
+  default-produces-media-type: "application/json"
